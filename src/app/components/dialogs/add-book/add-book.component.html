@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>
+  @if (data.preview) {
+    Show } @else if (data.title) {
+    Edit } @else {
+    Add new }
+  book
+</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="addBookFormGroup">
+    <mat-form-field class="w-full">
+      <mat-label>Enter book title</mat-label>
+      <input
+        matInput
+        required
+        [formControl]="addBookFormGroup.controls.title"
+      />
+      <mat-error *ngIf="addBookFormGroup.controls.title.invalid">This field are required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Enter author</mat-label>
+      <input
+        matInput
+        required
+        [formControl]="addBookFormGroup.controls.author"
+      />
+      <mat-error *ngIf="addBookFormGroup.controls.author.invalid">This field are required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Year</mat-label>
+      <input
+        matInput
+        required
+        [formControl]="addBookFormGroup.controls.year"
+      />
+    </mat-form-field>
+    <mat-error *ngIf="addBookFormGroup.controls.year.invalid">This field are required</mat-error>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button
+          mat-flat-button
+          [disabled]="addBookFormGroup.invalid || !!data.preview"
+          [mat-dialog-close]="true"
+          (click)="addBook()"
+  >Save
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,10 @@
+<div class="pl-6 pt-4 pr-4 py-2">
+  <h2> {{ data.title }} </h2>
+  <mat-dialog-content>
+    {{ data.description }}
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>No</button>
+    <button mat-button mat-dialog-close cdkFocusInitial (click)="submitAction()">Yes</button>
+  </mat-dialog-actions>
+</div>
